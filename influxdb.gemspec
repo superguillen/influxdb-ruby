@@ -26,4 +26,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec",    "~> 3.5.0"
   spec.add_development_dependency "webmock",  "~> 2.1.0"
   spec.add_development_dependency "rubocop"
+  spec.add_development_dependency "cause"
 end

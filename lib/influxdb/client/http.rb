@@ -55,15 +55,13 @@ module InfluxDB
       rescue *InfluxDB::NON_RECOVERABLE_EXCEPTIONS => e
         raise InfluxDB::ConnectionError, InfluxDB::NON_RECOVERABLE_MESSAGE
       rescue Timeout::Error, *InfluxDB::RECOVERABLE_EXCEPTIONS => e
-        retry_count += 1
-        if (config.retry == -1 || retry_count <= config.retry) && !stopped?
-          log :error, "Failed to contact host #{host}: #{e.inspect} - retrying in #{delay}s."
-          sleep delay
-          delay = [config.max_delay, delay * 2].min
-          retry
-        else
+        unless retry_connect?(retry_count += 1)
           raise InfluxDB::ConnectionError, "Tried #{retry_count - 1} times to reconnect but failed."
         end
+        log :error, "Failed to contact host #{host}: #{e.inspect} - retrying in #{delay}s."
+        sleep delay
+        delay = [config.max_delay, delay * 2].min
+        retry
       ensure
         http.finish if http.started?
       end
@@ -130,6 +128,10 @@ module InfluxDB
         end
       end
       store
+    end
+
+    def retry_connect?(count)
+      (config.retry == -1 || count <= config.retry) && !stopped?
     end
   end
 end

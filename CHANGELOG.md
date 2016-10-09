@@ -4,7 +4,13 @@ For the full commit log, [see here](https://github.com/influxdata/influxdb-ruby/
 
 ## Unreleased changes
 
+### Current 0.3.x series
+
 - None.
+
+### Upcoming 0.4.0 release
+
+- Removed Ruby 1.9 support
 
 ## v0.3.10, released 2016-10-03
 

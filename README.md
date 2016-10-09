@@ -7,8 +7,10 @@ Maintained by [@toddboom](https://github.com/toddboom) and [@dmke](https://githu
 
 ## Contents
 
-- [Platform support](#platform-support)
-- [Ruby support](#ruby-support)
+- [Requirements](#requirements)
+  - [Platform support](#platform-support)
+  - [Ruby support](#ruby-support)
+  - [Older versions](#older-versions)
 - [Installation](#installation)
 - [Usage](#usage)
   - [Creating a client](#creating-a-client)
@@ -24,23 +26,23 @@ Maintained by [@toddboom](https://github.com/toddboom) and [@dmke](https://githu
   - [Testing](#testing)
   - [Contributing](#contributing)
 
-## Platform support
+## Requirements
 
-> **Support for InfluxDB v0.8.x is now deprecated**. The final version of this
-> library that will support the older InfluxDB interface is `v0.1.9`, which is
-> available as a gem and tagged on this repository.
->
-> If you're reading this message, then you should only expect support for
-> InfluxDB v0.9.1 and higher.
+### Platform support
 
-## Ruby support
+This gem requires InfluxDB server in version 0.9.1 or higher.
 
-This gem should work with Ruby 1.9+, but starting with v0.4, we'll likely drop
-Ruby 1.9 support.
+### Ruby support
 
-Please note that for Ruby 1.9, you'll need to install the JSON gem in version
-1.8.x yourself, for example by pinning the version in your `Gemfile` (i.e.
-`gem "json", "~> 1.8.3"`).
+This gem requires Ruby 2.0 or later (MRI or compatible).
+
+### Older versions
+
+- Version 0.1.9 is the last version of this gem which supports the old
+  InfluxDB 0.8 interface. Please use that version, if you still need it.
+
+- You can use the 0.3.x release series, if you need to use this gem with
+  Ruby 1.9.
 
 ## Installation
 
